@@ -7,6 +7,9 @@ public class Main {
 	public static void main(String args[]) {
 		System.out.println("Hello World!");
 		System.out.println("Desiree");
+
+		System.out.println("Isabelle");
+
 		Card c = new Card();
 		Card c2 = new Card(4,'d');
 		
