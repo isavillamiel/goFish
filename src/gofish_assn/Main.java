@@ -6,12 +6,15 @@ public class Main {
 	
 	public static void main(String args[]) {
 		System.out.println("Hello World!");
-		System.out.println("Desiree");
 
-		System.out.println("Isabelle");
 
-		Card c = new Card();
+		Card c = new Card(5, Card.Suits.club);
 		Card c2 = new Card(4,'d');
+
+		System.out.println("Two cards made");
+
+		System.out.println(c.rank + " " + c.suit);
+
 		
 		System.out.println();
 		System.out.println(c.toString());
