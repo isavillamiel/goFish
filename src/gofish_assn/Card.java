@@ -1,5 +1,6 @@
 package gofish_assn;
 
+
 public class Card {
 	
 	public enum Suits {club, diamond, heart, spade};
@@ -20,7 +21,8 @@ public class Card {
 	}
 	
 	public Card(int r, Suits s) {
-
+		rank = r;
+		suit = s;
 	}
 	
 	private Suits toSuit(char c) {
@@ -36,8 +38,11 @@ public class Card {
 	{
 		return "A"; //dummy
 	}
-		
-	
+
+	/**
+	 * gets the rank of the card
+	 * @return the rank of the card
+	 */
 	public int getRank() {
 		return rank;
 	}
