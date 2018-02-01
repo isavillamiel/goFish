@@ -22,18 +22,7 @@ public class Card {
      * */
 	public Card(int r, char s) {
 		rank = r;
-		if(s == 's'){
-			suit = Suits.spade;
-		}
-		if(s == 'c'){
-			suit = Suits.club;
-		}
-		if(s == 'd'){
-			suit = Suits.diamond;
-		}
-		if(s == 'h'){
-			suit = Suits.heart;
-		}
+	    this.suit = toSuit(s);
 	}
 	
 	public Card(int r, Suits s) {
@@ -42,7 +31,22 @@ public class Card {
 	}
 	
 	private Suits toSuit(char c) {
-		return Suits.spade; //dummy
+	    Suits result;
+
+        if(c == 's'){
+           result = Suits.spade;
+        }
+        else if(c == 'c'){
+            result = Suits.club;
+        }
+        else if(c == 'd'){
+            result = Suits.diamond;
+        }
+        else{
+            result = Suits.heart;
+        }
+
+        return result;
 	}
 	
 	private String suitToString(Suits s)
