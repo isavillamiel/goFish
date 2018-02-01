@@ -16,7 +16,19 @@ public class Card {
 	}
 	
 	public Card(int r, char s) {
-
+		rank = r;
+		if(s == 's'){
+			suit = Suits.spade;
+		}
+		if(s == 'c'){
+			suit = Suits.club;
+		}
+		if(s == 'd'){
+			suit = Suits.diamond;
+		}
+		if(s == 'h'){
+			suit = Suits.heart;
+		}
 	}
 	
 	public Card(int r, Suits s) {
