@@ -19,7 +19,7 @@ public class Deck {
 	}
 
 	/**
-	 * prints out all the Cards in a Deck to the console 
+	 * prints out all the Cards in a Deck to the console
 	 */
 	public void printDeck() {
 		for(int i=0;i<deck.size();i++){
