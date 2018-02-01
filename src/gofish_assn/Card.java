@@ -15,7 +15,11 @@ public class Card {
 		rank = 1;
 		suit = Suits.spade;
 	}
-	
+	/**
+     * This
+     * @param r is the rank of the Card
+     * @param s is the first letter of the Suit of the Card
+     * */
 	public Card(int r, char s) {
 		rank = r;
 		if(s == 's'){
@@ -43,12 +47,16 @@ public class Card {
 	
 	private String suitToString(Suits s)
 	{
-		return "s"; //dummy
+		String res = "";
+		res = res + s;
+		return res;
 	}
 	
 	private String rankToString(int r)
 	{
-		return "A"; //dummy
+		String res = "";
+		res = res + r;
+		return res;
 	}
 
 	/**
@@ -66,7 +74,7 @@ public class Card {
 	public String toString() {
 		String s = "";
 		
-		s = s + rankToString(getRank()) + suitToString(getSuit());
+		s = s + rankToString(getRank()) + " " + suitToString(getSuit());
 		
 		return s;
 	}
