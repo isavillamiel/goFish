@@ -8,8 +8,12 @@ import java.util.Random;
 public class Deck {
 	ArrayList<Card> deck = new ArrayList<Card> ();
 	final int NUM_CARDS = 52;  //for this kind of deck
-	
-	//creates a new sorted deck
+
+	/**
+	 * initializes and stores new cards into the deck.
+	 * The default order is: 1(s,c,h,d), 2(s,c,h,d), up to 13.
+	 */
+
 	public Deck() {
 		for(int i = 1; i < 14; i++){
 			Card new_Spade = new Card(i,'s');

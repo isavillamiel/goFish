@@ -1,6 +1,8 @@
 package gofish_assn;
 
 import java.util.ArrayList;
+import java.util.Iterator;
+
 
 public class Player {
 	
@@ -12,14 +14,28 @@ public class Player {
 		this.name = name;
 	}
 	
+	/**	This function adds a new card onto the Player's hand
+	 * @param c is added onto the Player's hand
+	 * */
 	public void addCardToHand(Card c) {
-	
+		this.hand.add(c);
 	}
-	
+	/**
+	 *  This function removes the card from the Player's hand
+	 *  and returns it.
+	 * @param c is found and removed from Player's hand
+	 * */
 	public Card removeCardFromHand(Card c) {
-		Card retCard = new Card();
-		
-		return retCard;
+		Iterator<Card> it = hand.iterator();
+		Card removeCard = new Card();
+		while(it.hasNext()){
+				removeCard = it.next();
+				if(removeCard==c){
+					it.remove();
+					break;
+				}
+			}
+		return removeCard;
 	}
 	
 	public String getName() {
