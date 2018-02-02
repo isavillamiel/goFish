@@ -11,7 +11,16 @@ public class Deck {
 	
 	//creates a new sorted deck
 	public Deck() {
-
+		for(int i = 1; i < 14; i++){
+			Card new_Spade = new Card(i,'s');
+			deck.add(new_Spade);
+			Card new_Club = new Card(i,'c');
+			deck.add(new_Club);
+			Card new_Heart = new Card(i,'h');
+			deck.add(new_Heart);
+			Card new_Diamond = new Card(i,'d');
+			deck.add(new_Diamond);
+		}
 	}
 	
 	public void shuffle() {
