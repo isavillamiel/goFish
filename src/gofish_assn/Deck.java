@@ -15,7 +15,12 @@ public class Deck {
 	}
 	
 	public void shuffle() {
-		
+		for(int i=0;i<deck.size();i++){
+			int rand = (int)(Math.random()*i+1);
+			Card temp = deck.get(i);
+			deck.set(i,deck.get(rand));
+			deck.set(rand,temp);
+		}
 	}
 
 	/**
