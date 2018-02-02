@@ -13,12 +13,11 @@ public class Player {
 	public Player(String name) {
 		this.name = name;
 	}
-	
 	/**	This function adds a new card onto the Player's hand
 	 * @param c is added onto the Player's hand
 	 * */
 	public void addCardToHand(Card c) {
-		this.hand.add(c);
+		hand.add(c);
 	}
 	/**
 	 *  This function removes the card from the Player's hand
@@ -41,26 +40,47 @@ public class Player {
 	public String getName() {
 		return name;
 	}
-	
+	/**
+     *  This function creates a string
+     *  with all the card from the Player's hand
+     *  and returns it.
+     *  @return s is the string
+     * */
 	public String handToString() {
 		String s = new String();
-	
+        Iterator<Card> it = hand.iterator();
+        while(it.hasNext()){
+            s += it.next().toString() + "\n";
+        }
 		return s;
 	}
-	
+    /**
+     *  This function creates a string
+     *  with all the card from the Player's book
+     *  and returns it.
+     *  @return s is the string
+     * */
 	public String bookToString() {
-		String s = new String();
-		
-		return s;
+        String s = new String();
+        Iterator<Card> it = book.iterator();
+        while(it.hasNext()){
+            s += it.next().toString() + "\n";
+        }
+        return s;
 	}
-	
+	/**
+     *  This function returns the size of the Player's hand
+     *  using ArrayList's native size function.
+     * */
 	public int getHandSize() {
-		return 0;
+        return hand.size();
 	}
-	
-	
+    /**
+     *  This function returns the size of the Player's book
+     *  using ArrayList's native size function.
+     * */
 	public int getBookSize() {
-		return 0;
+		return book.size();
 	}
 	
 	
