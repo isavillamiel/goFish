@@ -78,7 +78,7 @@ public class Card {
 	public String toString() {
 		String s = "";
 		
-		s = s + rankToString(getRank()) + " " + suitToString(getSuit());
+		s = s + rankToString(getRank()) + " of " + suitToString(getSuit()) + "s";
 		
 		return s;
 	}
