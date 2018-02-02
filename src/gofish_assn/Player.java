@@ -82,16 +82,32 @@ public class Player {
 	public int getBookSize() {
 		return book.size();
 	}
-	
-	
-	//Here are som ideas for additional functionality that you may want/need
-	//OPTIONAL
-    // comment out if you decide to not use it
-    //this function will check a players hand for a pair. 
-    //If a pair is found, it moves the cards to the book and returns true
 
+    /**
+     *  This function will check a Player's hand for a pair.
+     *  If 1 pair is found, it moves the cards to the book
+     *  and returns true.
+     * */
     public boolean checkHandForBook() {
-    	return false; //stubbed
+	    Iterator<Card> it = hand.iterator();
+	    Card card1 = new Card();
+	    Card card2 = new Card();
+	    while(it.hasNext()){
+	        card1 = it.next();
+            Iterator<Card> itPlusOne = it;
+            while(itPlusOne.hasNext()){
+                card2 = itPlusOne.next();
+                if(card1.rank==card2.rank){
+                    book.add(card1);
+                    book.add(card2);
+                    removeCardFromHand(card1);
+                    removeCardFromHand(card2);
+                    return true;
+
+                }
+            }
+        }
+    	return false;
     }
 
     //OPTIONAL
