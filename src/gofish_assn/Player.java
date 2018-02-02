@@ -97,7 +97,7 @@ public class Player {
             Iterator<Card> itPlusOne = it;
             while(itPlusOne.hasNext()){
                 card2 = itPlusOne.next();
-                if(card1.rank==card2.rank){
+                if(card1.getRank()==card2.getRank()){
                     book.add(card1);
                     book.add(card2);
                     removeCardFromHand(card1);
@@ -110,11 +110,21 @@ public class Player {
     	return false;
     }
 
-    //OPTIONAL
-    // comment out if you decide to not use it    
-    //Does the player have a card with the same rank as c in her hand?
+    /**
+     *  This function returns whether or not a card's rank
+     *  is in the Player's hand.
+     *  @param c's rank is the one being compared with the hand.
+     * */
     public boolean rankInHand(Card c) {
-    	return false; //stubbed
+        Iterator<Card> it = hand.iterator();
+        Card card1;
+        while(it.hasNext()){
+            card1 = it.next();
+            if(card1.getRank()==c.getRank()){
+                return true;
+            }
+        }
+    	return false;
     }
     
     //uses some strategy to choose one card from the player's
