@@ -15,26 +15,36 @@ public class Card {
 	
 	private int rank;  //1 is an Ace
 	private Suits suit;
-	
+	/**
+     * This constructor creates a default card
+     * with the value: 1 of Spades
+     * */
 	public Card() {
 		rank = 1;
 		suit = Suits.spade;
 	}
 	/**
-     * This
-     * @param r is the rank of the Card
-     * @param s is the first letter of the Suit of the Card
+     * This constructor creates a specific card.
+     * @param rank is the rank of the Card
+     * @param suit is the first letter of the Suit of the Card
      * */
-	public Card(int r, char s) {
-		rank = r;
-	    this.suit = toSuit(s);
+	public Card(int rank, char suit) {
+		this.rank = rank;
+	    this.suit = toSuit(suit);
 	}
-	
-	public Card(int r, Suits s) {
-		rank = r;
-		suit = s;
+    /**
+     * This constructor creates a specific card.
+     * @param rank is the rank of the Card
+     * @param suit is the actual Suit
+     * */
+	public Card(int rank, Suits suit) {
+		this.rank = rank;
+		this.suit = suit;
 	}
-	
+    /**
+     * Correctly changes the character to a Suit
+     * @param c is the first letter of the Suit
+     * */
 	private Suits toSuit(char c) {
 	    Suits result;
 
@@ -53,18 +63,26 @@ public class Card {
 
         return result;
 	}
-	
-	private String suitToString(Suits s)
+	/**
+     *  This function changes the Suit to a string
+     *  Private scope so only this class can use it.
+     *  @param suit is the suit in question
+     * */
+	private String suitToString(Suits suit)
 	{
 		String res = "";
-		res = res + s;
+		res = res + suit;
 		return res;
 	}
-	
-	private String rankToString(int r)
+    /**
+     *  This function changes an integer to a String
+     *  Private scope so only this class can use it.
+     *  @param rank is the number in question
+     * */
+	private String rankToString(int rank)
 	{
 		String res = "";
-		res = res + r;
+		res = res + rank;
 		return res;
 	}
 
@@ -75,11 +93,18 @@ public class Card {
 	public int getRank() {
 		return rank;
 	}
-	
+    /**
+     * gets the suit of the card
+     * @return the suit of the card
+     */
 	public Suits getSuit() {
 		return suit;
 	}
-	
+    /**
+     *  This function returns a string of the
+     *  whole card's name
+     * @return name of card with rank and suit
+     */
 	public String toString() {
 		String s = "";
 		
