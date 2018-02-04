@@ -13,7 +13,7 @@ public class Player {
 	
 	ArrayList<Card> hand = new ArrayList<Card>();
 	ArrayList<Card> book = new ArrayList<Card>();
-	String name;
+	private String name;
 	
 	public Player(String name) {
 		this.name = name;

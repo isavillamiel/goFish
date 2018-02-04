@@ -13,8 +13,8 @@ public class Card {
 	static int TOP_RANK = 13; //King
 	static int LOW_RANK = 1; //Ace
 	
-	int rank;  //1 is an Ace
-	Suits suit;
+	private int rank;  //1 is an Ace
+	private Suits suit;
 	
 	public Card() {
 		rank = 1;
