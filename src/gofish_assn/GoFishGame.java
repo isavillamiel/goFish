@@ -1,5 +1,11 @@
 package gofish_assn;
 
+/**
+ *  Represents the entire game of GoFish with two players.
+ *  @author Isabelle Villamiel, Desiree Tang
+ *  @version 1.0
+ *
+ * */
 public class GoFishGame {
 
 	public GoFishGame() {
