@@ -95,23 +95,21 @@ public class Player {
      *  and returns true.
      * */
     public boolean checkHandForBook() {
-	    Iterator<Card> it = hand.iterator();
-	    Card card1 = new Card();
-	    Card card2 = new Card();
-	    while(it.hasNext()){
-	        card1 = it.next();
-            Iterator<Card> itPlusOne = it;
-            while(itPlusOne.hasNext()){
-                card2 = itPlusOne.next();
-                if(card1.getRank()==card2.getRank()){
-                    book.add(card1);
-                    book.add(card2);
-                    removeCardFromHand(card1);
-                    removeCardFromHand(card2);
-                    return true;
-
-                }
-            }
+	    Card card1;
+	    Card card2;
+		int current_position = 0;
+	    for(Card i: hand){
+	        card1 = i;
+			if(sameRankInHand(card1,current_position+1) != -1){
+				int location = (sameRankInHand(card1,current_position+1));
+				card2 = hand.get(location);
+				book.add(card1);
+				book.add(card2);
+				hand.remove(location);
+				hand.remove(current_position);
+				return true;
+			}
+			current_position++;
         }
     	return false;
     }
@@ -148,7 +146,7 @@ public class Player {
 		}
 		return CardFromHand;
 	}
-    
+
     //Does the player have the card c in her hand?
 
 	/**
@@ -167,15 +165,23 @@ public class Player {
 		}
     	return false;
     }
-    
+
 
     //OPTIONAL
-    // comment out if you decide to not use it    
+    // comment out if you decide to not use it
     //Does the player have a card with the same rank as c in her hand?
     //e.g. will return true if the player has a 7d and the parameter is 7c
-    
-    public boolean sameRankInHand(Card c) {
-    	return false; //stubbed
+
+    public int sameRankInHand(Card c,int location) {
+    	int finding = c.getRank();
+    	int cur_location = location;
+    	for(Card it : hand.subList(location,hand.size())){
+    		if (it.getRank() == finding){
+    			return cur_location;
+			}
+			cur_location++;
+		}
+    	return -1;
     }
 
 }
