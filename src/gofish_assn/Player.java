@@ -136,8 +136,22 @@ public class Player {
     }
     
     //Does the player have the card c in her hand?
+
+	/**
+	 * Checks whether or not Card c is in the Player's hand
+	 * @param c is the card in question
+	 * @return true if Card c is in the Player's hand and false if not
+	 */
     public boolean cardInHand(Card c) {
-    	return false; //stubbed
+		Iterator<Card> it = hand.iterator();
+		Card ind;
+		while(it.hasNext()){
+			ind = it.next();
+			if(ind == c) {
+				return true;
+			}
+		}
+    	return false;
     }
     
 
