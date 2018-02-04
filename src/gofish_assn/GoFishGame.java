@@ -90,7 +90,37 @@ public class GoFishGame {
 
 		}
 
+        // end of game: must have a total of 26 pairs in both books
+        if(p1.getBookSize() > p2.getBookSize()){
+            System.out.println(p1.getName() + " wins with " + p1.getBookSize() +" booked pairs.");
+            System.out.println("These are " + p1.getName() + "'s pairs");
+            System.out.println(p1.bookToString());
+            System.out.println(p2.getName() + "has " + p2.getBookSize() + " booked pairs.");
+            System.out.println("These are " + p2.getName() + "'s pairs");
+            System.out.println(p2.bookToString());
+            System.out.println("Thanks for playing Go Fish!");
+        }
+        else if(p1.getBookSize() < p2.getBookSize()){
+            System.out.println(p2.getName() + " wins with " + p2.getBookSize() +" booked pairs.");
+            System.out.println("These are " + p2.getName() + "'s pairs");
+            System.out.println(p2.bookToString());
+            System.out.println(p1.getName() + "has " + p1.getBookSize() + " booked pairs.");
+            System.out.println("These are " + p1.getName() + "'s pairs");
+            System.out.println(p1.bookToString());
+            System.out.println("Thanks for playing Go Fish!");
+        }
+        else if(p1.getBookSize() == p2.getBookSize()){
+            System.out.println("Tie game!");
+            System.out.println(p1.getName() + " has " + p1.getBookSize() + " booked pairs");
+            System.out.println("These are " + p1.getName() + "'s pairs");
+            System.out.println(p1.bookToString());
 
+            System.out.println(p2.getName() + "has " + p2.getBookSize() + " booked pairs.");
+            System.out.println("These are " + p2.getName() + "'s pairs");
+            System.out.println(p2.bookToString());
+
+            System.out.println("Thanks for playing Go Fish!");
+        }
 	}
 
 }
