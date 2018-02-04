@@ -59,16 +59,13 @@ public class Deck {
 	 * @return a Card that is dealt from the deck
 	 */
 	public Card dealCard() {
-		if(deck.isEmpty()){
-			System.out.println("No more cards in deck. Continue to next player's turn.");
-			Card none = new Card();
-			return none;
-		}
-		else{
 			Card c = deck.remove(deck.size()-1);
 			return c;
-		}
 	}
+
+	public boolean isEmpty(){
+        return deck.isEmpty();
+    }
 	
 
 }
