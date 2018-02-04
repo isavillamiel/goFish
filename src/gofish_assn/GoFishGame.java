@@ -46,6 +46,7 @@ public class GoFishGame {
             System.out.println(p2.handToString());
         }
 
+
         for(int i =0; i< 10; i++){
 		//while((p1.getBookSize() + p2.getBookSize() )!= 23){
 
@@ -68,6 +69,7 @@ public class GoFishGame {
                 else{
                     Card nextCard = d.dealCard();
                     System.out.println(p1.getName() + " draws " + nextCard.toString());
+                    p1.addCardToHand(nextCard);
                 }
 
             }
@@ -91,6 +93,7 @@ public class GoFishGame {
                 else{
                     Card nextCard = d.dealCard();
                     System.out.println(p1.getName() + " draws " + nextCard.toString());
+                    p2.addCardToHand(nextCard);
                 }
             }
 
