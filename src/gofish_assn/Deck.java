@@ -26,7 +26,10 @@ public class Deck {
 			deck.add(new_Diamond);
 		}
 	}
-	
+
+	/**
+	 * randomizes the deck of Cards
+	 */
 	public void shuffle() {
 		for(int i=0;i<deck.size();i++){
 			int rand = (int)(Math.random()*i+1);
@@ -44,14 +47,21 @@ public class Deck {
 			System.out.println(deck.get(i));
 		}
 	}
-	
-	
+
+	/**
+	 * deals a Card to a Player
+	 * @return a Card that is dealt from the deck
+	 */
 	public Card dealCard() {
-		
-		Card c = new Card();
-		
-		return c;
-		
+		if(deck.isEmpty()){
+			System.out.println("No more cards in deck. Continue to next player's turn.");
+			Card none = new Card();
+			return none;
+		}
+		else{
+			Card c = deck.remove(deck.size()-1);
+			return c;
+		}
 	}
 	
 
