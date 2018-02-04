@@ -1,2 +1,2 @@
 # goFish
-fish game
+The automated fish game
