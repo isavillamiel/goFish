@@ -2,6 +2,7 @@ package gofish_assn;
 
 import java.util.ArrayList;
 import java.util.Iterator;
+import java.util.Random;
 
 
 public class Player {
@@ -136,8 +137,9 @@ public class Player {
     public Card chooseCardFromHand() {
 		Card CardFromHand = new Card();
 		if(hand.size()!=0){
-			CardFromHand = hand.get(0);
-    		hand.remove(0);
+			int rand = (int)(Math.floor(Math.random()*hand.size()));
+			CardFromHand = hand.get(rand);
+    		hand.remove(rand);
 		}
 		return CardFromHand;
 	}
