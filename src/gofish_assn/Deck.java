@@ -5,6 +5,12 @@ import java.util.ArrayList;
 import gofish_assn.Card.Suits;
 import java.util.Random;
 
+/**
+ *  Represents the game's deck of cards. One per game.
+ *  @author Isabelle Villamiel, Desiree Tang
+ *  @version 1.0
+ *
+ * */
 public class Deck {
 	ArrayList<Card> deck = new ArrayList<Card> ();
 	final int NUM_CARDS = 52;  //for this kind of deck

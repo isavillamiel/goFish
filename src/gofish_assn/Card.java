@@ -1,6 +1,11 @@
 package gofish_assn;
 
-
+/**
+ *  Represents a card that will go into a Deck and will be used by the players.
+ *  @author Isabelle Villamiel, Desiree Tang
+ *  @version 1.0
+ *
+ * */
 public class Card {
 	
 	public enum Suits {club, diamond, heart, spade};

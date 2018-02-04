@@ -3,7 +3,12 @@ package gofish_assn;
 import java.util.ArrayList;
 import java.util.Iterator;
 
-
+/**
+ *  Represents the players in the game and their cards in hands and books.
+ *  @author Isabelle Villamiel, Desiree Tang
+ *  @version 1.0
+ *
+ * */
 public class Player {
 	
 	ArrayList<Card> hand = new ArrayList<Card>();
