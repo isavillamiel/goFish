@@ -126,14 +126,21 @@ public class Player {
         }
     	return false;
     }
-    
-    //uses some strategy to choose one card from the player's
-    //hand so they can say "Do you have a 4?"
+    /**
+	 * Uses some strategy to choose one card from the player's
+	 * hand so they can say "Do you have a 4?"
+	 * Strategy: get the card from the beginning of Player's hand
+	 * @return that CardFromHand
+	 */
+
     public Card chooseCardFromHand() {
-    	Card c = new Card();
-    	
-    	return c;
-    }
+		Card CardFromHand = new Card();
+		if(hand.size()!=0){
+			CardFromHand = hand.get(0);
+    		hand.remove(0);
+		}
+		return CardFromHand;
+	}
     
     //Does the player have the card c in her hand?
 
