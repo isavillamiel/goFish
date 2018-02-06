@@ -12,8 +12,8 @@ import java.util.Random;
  * */
 public class Player {
 	
-	ArrayList<Card> hand = new ArrayList<Card>();
-	ArrayList<Card> book = new ArrayList<Card>();
+	private ArrayList<Card> hand = new ArrayList<Card>();
+	private ArrayList<Card> book = new ArrayList<Card>();
 	private String name;
 	
 	public Player(String name) {

@@ -10,8 +10,8 @@ public class Card {
 	
 	public enum Suits {club, diamond, heart, spade};
 	
-	static int TOP_RANK = 13; //King
-	static int LOW_RANK = 1; //Ace
+	final static int TOP_RANK = 13; //King
+	final static int LOW_RANK = 1; //Ace
 	
 	private int rank;  //1 is an Ace
 	private Suits suit;
