@@ -20,21 +20,17 @@ public class GoFishGame {
     public GoFishGame() {
         FileWriter out = null;
         dealCards();
-        printPlayerHands();
 
         //Actual game starts here
         checkPlayersBooks();
+        printPlayerHands();
 
         //for(int i =0; i< 10; i++){
         while ((p1.getBookSize() + p2.getBookSize()) != 52) {
            checkPlayersBooks();
            player1Turn();
            player2Turn();
-           if (d.isEmpty()) {
-               do{
-                   checkPlayersBooks();
-               }while(p1.getBookSize() + p2.getBookSize() != 52);
-           }
+            System.out.println("Number of Cards left in Deck: " +d.remainder());
         }
         GameOver();
         try{
@@ -62,6 +58,13 @@ public class GoFishGame {
         System.out.println(p1.handToString());
         System.out.println(p2.getName() + "'s Hand: ");
         System.out.println(p2.handToString());
+    }
+    // helper function for debugging
+    private void printPlayerBooks(){
+        System.out.println(p1.getName() + "'s Book: ");
+        System.out.println(p1.bookToString());
+        System.out.println(p2.getName() + "'s Book: ");
+        System.out.println(p2.bookToString());
     }
 
     //needs work
@@ -110,11 +113,19 @@ public class GoFishGame {
         checkPlayersBooks();
         String p2Turn = "";
         String p1Response = "";
-        if (p2.getHandSize() == 0 && !d.isEmpty()) {
+
+        if((p2.getHandSize() == 0 || p2.getHandSize() == 1) && d.isEmpty()){
+            player1Turn();
+        }
+
+        else if(p2.getHandSize() > 1 && d.isEmpty()){
+            p2.checkHandForBook();
+        }
+        else if (p2.getHandSize() == 0 && !d.isEmpty()) {
             Card draw2 = d.dealCard();
             p2.addCardToHand(draw2);
         }
-        if (p2.getHandSize() != 0 && !d.isEmpty()) {
+        else if (p2.getHandSize() > 1 && !d.isEmpty()) {
             // Player 2's Card
             Card chosen2 = p2.chooseCardFromHand();
             p2Turn += p2.getName() + " asks: Do you have a " + chosen2.getRank() + "?";
@@ -145,12 +156,20 @@ public class GoFishGame {
         String p2Response = "";
         checkPlayersBooks();
 
-        if (p1.getHandSize() == 0 && !d.isEmpty()) { // hand is empty so draw card
+        if((p1.getHandSize() == 0 || p1.getHandSize() == 1) && d.isEmpty()){
+            player2Turn();
+        }
+
+        else if(p1.getHandSize() > 1 && d.isEmpty()){
+            p1.checkHandForBook();
+        }
+
+        else if (p1.getHandSize() == 0 && !d.isEmpty()) { // hand is empty so draw card
             Card draw1 = d.dealCard();
             p1.addCardToHand(draw1);
         }
 
-        if (p1.getHandSize() != 0 && !d.isEmpty()) {
+        else if (p1.getHandSize() > 1 && !d.isEmpty()) {
 
             // Player 1's turn
             //if deck is empty and hand is empty -> move on to next player
