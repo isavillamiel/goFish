@@ -138,7 +138,7 @@ public class GoFishGame {
             }
         }
         output += "\n" + p2Turn + "\n" + p1Response;
-        System.out.println(p2Turn + "\n" + p1Response);
+        System.out.println(p2Turn + "\n" + p1Response + "\n");
     }
     private void player1Turn(){
         String p1Turn = "";
@@ -175,7 +175,7 @@ public class GoFishGame {
 
             }
             output += "\n" + p1Turn + "\n" + p2Response;
-            System.out.println(p1Turn + "\n" + p2Response);
+            System.out.println(p1Turn + "\n" + p2Response + "\n");
         }
     }
 }
