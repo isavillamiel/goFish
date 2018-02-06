@@ -26,22 +26,15 @@ public class GoFishGame {
         checkPlayersBooks();
 
         //for(int i =0; i< 10; i++){
-        while ((p1.getBookSize() + p2.getBookSize()) != 26) {
+        while ((p1.getBookSize() + p2.getBookSize()) != 52) {
            checkPlayersBooks();
            player1Turn();
            player2Turn();
-                if (d.isEmpty()) {
-                    // one player has all cards and the other player has none and deck is empty
-                    // if both player has cards and deck is empty
-                    while (p1.checkHandForBook()) {
-                    }
-                    while (p2.checkHandForBook()) {
-                    }
-                    if (p1.getBookSize() + p2.getBookSize() == 26) {
-                        break;
-                    }
-                }
-
+           if (d.isEmpty()) {
+               do{
+                   checkPlayersBooks();
+               }while(p1.getBookSize() + p2.getBookSize() != 52);
+           }
         }
         GameOver();
         try{
@@ -139,7 +132,7 @@ public class GoFishGame {
                     p1Response += "\n" + "No more cards in deck. Continue to next player's turn.";
                 } else {
                     Card nextCard = d.dealCard();
-                    p1Response += "\n" + p1.getName() + " draws " + nextCard.toString();
+                    p1Response += "\n" + p2.getName() + " draws " + nextCard.toString();
                     p2.addCardToHand(nextCard);
                 }
             }
@@ -148,7 +141,10 @@ public class GoFishGame {
         System.out.println(p2Turn + "\n" + p1Response);
     }
     private void player1Turn(){
+        String p1Turn = "";
+        String p2Response = "";
         checkPlayersBooks();
+
         if (p1.getHandSize() == 0 && !d.isEmpty()) { // hand is empty so draw card
             Card draw1 = d.dealCard();
             p1.addCardToHand(draw1);
@@ -159,26 +155,27 @@ public class GoFishGame {
             // Player 1's turn
             //if deck is empty and hand is empty -> move on to next player
             Card chosen1 = p1.chooseCardFromHand();
-            System.out.println(p1.getName() + " asks: Do you have a " + chosen1.getRank() + "?");
+            p1Turn += p1.getName() + " asks: Do you have a " + chosen1.getRank() + "?";
 
             if (p2.rankInHand(chosen1)) {
-                System.out.println(p2.getName() + " says: Yes. I do have a " + chosen1.getRank());
+                p2Response += "\n" + p2.getName() + " says: Yes. I do have a " + chosen1.getRank();
                 Card removed1 = p2.removeCardFromHand(chosen1);
                 p1.addCardToHand(removed1);
                 p1.checkHandForBook();
-                System.out.println(p1.getName() + " books the " + chosen1.getRank());
+                p2Response += "\n" + p1.getName() + " books the " + chosen1.getRank();
             } else {
-                System.out.println(p2.getName() + " says: Go Fish");
+                p2Response += p2.getName() + " says: Go Fish";
                 if (d.isEmpty()) {
-                    System.out.println("No more cards in deck. Continue to next player's turn.");
+                    p2Response += "\n" + "No more cards in deck. Continue to next player's turn."+ "\n";
                 } else {
                     Card nextCard = d.dealCard();
-                    System.out.println(p1.getName() + " draws " + nextCard.toString());
+                    p2Response += "\n" + p1.getName() + " draws " + nextCard.toString();
                     p1.addCardToHand(nextCard);
                 }
 
             }
-
+            output += "\n" + p1Turn + "\n" + p2Response;
+            System.out.println(p1Turn + "\n" + p2Response);
         }
     }
 }
