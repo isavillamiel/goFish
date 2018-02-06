@@ -46,6 +46,7 @@ public class GoFishGame {
             System.out.println(p2.handToString());
         }
 
+
         //for(int i =0; i< 10; i++){
 		while((p1.getBookSize() + p2.getBookSize() )!= 26){
             while(p1.checkHandForBook()){}
@@ -53,6 +54,8 @@ public class GoFishGame {
 
 
             if(p1.getHandSize() == 0 && !d.isEmpty()){ // hand is empty so draw card
+
+            if(p1.hand.isEmpty() && !d.isEmpty()){ // hand is empty so draw card
                 Card draw1 = d.dealCard();
                 p1.addCardToHand(draw1);
             }
@@ -81,6 +84,7 @@ public class GoFishGame {
                     }
 
                 }
+
             }
 
             if(p2.getHandSize() == 0 && !d.isEmpty()){
