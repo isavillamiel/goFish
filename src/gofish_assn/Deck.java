@@ -12,7 +12,7 @@ import java.util.Random;
  *
  * */
 public class Deck {
-	ArrayList<Card> deck = new ArrayList<Card> ();
+	private ArrayList<Card> deck = new ArrayList<Card> ();
 	final int NUM_CARDS = 52;  //for this kind of deck
 
 	/**

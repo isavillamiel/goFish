@@ -52,12 +52,12 @@ public class GoFishGame {
             while(p2.checkHandForBook()){}
 
 
-            if(p1.hand.isEmpty() && !d.isEmpty()){ // hand is empty so draw card
+            if(p1.getHandSize() == 0 && !d.isEmpty()){ // hand is empty so draw card
                 Card draw1 = d.dealCard();
                 p1.addCardToHand(draw1);
             }
 
-            if(!p1.hand.isEmpty() && !d.isEmpty()) {
+            if(p1.getHandSize() != 0 && !d.isEmpty()) {
 
                 // Player 1's turn
                 //if deck is empty and hand is empty -> move on to next player
@@ -83,12 +83,12 @@ public class GoFishGame {
                 }
             }
 
-            if(p2.hand.isEmpty() && !d.isEmpty()){
+            if(p2.getHandSize() == 0 && !d.isEmpty()){
                 Card draw2 = d.dealCard();
                 p2.addCardToHand(draw2);
             }
 
-            if(!p2.hand.isEmpty() && !d.isEmpty()) {
+            if(p2.getHandSize() != 0 && !d.isEmpty()) {
                 // Player 2's Card
                 Card chosen2 = p2.chooseCardFromHand();
                 System.out.println(p2.getName() + " asks: Do you have a " + chosen2.getRank() + "?");
