@@ -37,8 +37,9 @@ public class Deck {
 	 * randomizes the deck of Cards
 	 */
 	public void shuffle() {
+		Random rnd = new Random(10000);
 		for(int i=0;i<deck.size();i++){
-			int rand = (int)(Math.random()*i+1);
+			int rand = rnd.nextInt(52)+1;
 			Card temp = deck.get(i);
 			deck.set(i,deck.get(rand));
 			deck.set(rand,temp);

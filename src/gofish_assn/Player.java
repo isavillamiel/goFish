@@ -26,7 +26,7 @@ public class Player {
 		hand.add(c);
 	}
 	/**
-	 *  This function removes the card from the Player's hand
+	 *  This function removes a card with the same rank from the Player's hand
 	 *  and returns it.
 	 * @param c is found and removed from Player's hand
 	 * */
@@ -35,7 +35,7 @@ public class Player {
 		Card removeCard = new Card();
 		while(it.hasNext()){
 				removeCard = it.next();
-				if(removeCard==c){
+				if(removeCard.getRank()==c.getRank()){
 					it.remove();
 					break;
 				}
@@ -95,24 +95,20 @@ public class Player {
      *  and returns true.
      * */
     public boolean checkHandForBook() {
-	    Card card1;
-	    Card card2;
-		int current_position = 0;
+
 		if(hand.size() == 1 || hand.size() == 0){return false;}
-	    for(Card i: hand){
-	        card1 = i;
-			if(sameRankInHand(card1,current_position+1) != -1){
-				int location = (sameRankInHand(card1,current_position+1));
-				card2 = hand.get(location);
-				book.add(card1);
-				book.add(card2);
-				hand.remove(location);
-				hand.remove(current_position);
-				return true;
+
+		for(int i=0; i<hand.size();i++){
+			for(int j=i+1; j<hand.size();j++){
+				if(hand.get(i).getRank() == hand.get(j).getRank()){
+					book.add(hand.get(i));
+					book.add(hand.get(j));
+					return true;
+				}
 			}
-			current_position++;
-        }
-    	return false;
+		}
+		return false;
+
     }
 
     /**
@@ -141,7 +137,7 @@ public class Player {
     public Card chooseCardFromHand() {
     	int rand = (int)(Math.floor(Math.random()*hand.size()));
     	Card CardFromHand = hand.get(rand);
-    	hand.remove(rand);
+    	//hand.remove(rand);
 		return CardFromHand;
 	}
 
