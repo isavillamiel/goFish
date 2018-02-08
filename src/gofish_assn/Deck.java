@@ -54,7 +54,9 @@ public class Deck {
 			System.out.println(deck.get(i));
 		}
 	}
-
+    public int size (){
+	    return deck.size();
+    }
 	/**
 	 * deals a Card to a Player
 	 * @return a Card that is dealt from the deck

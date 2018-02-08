@@ -9,6 +9,7 @@ import java.io.IOException;
  *  @version 1.0
  *
  * */
+
 public class GoFishGame {
     private String output = "";
     private Deck d = new Deck();
@@ -16,9 +17,6 @@ public class GoFishGame {
     private Player p1 = new Player("Desiree");
     private Player p2 = new Player("Isabelle");
 
-    /**
-     * Simulates the real card game Go Fish
-     */
     public GoFishGame() {
         FileWriter out = null;
         dealCards();
@@ -111,7 +109,7 @@ public class GoFishGame {
 
         }
         else if (p1.getBookSize() == p2.getBookSize()) {
-            String tie = "Time game!";
+            String tie = "Tie game!";
             output += "\n" +tie;
             winner += p1.getName() + " has " + p1.getBookSize()/2 + " booked pairs";
             loser += p2.getName() + " has " + p2.getBookSize()/2 + " booked pairs.";
@@ -150,7 +148,7 @@ public class GoFishGame {
             }
         }
 
-        else if (p2.getHandSize() == 0 && !d.isEmpty()) {
+        else if (p2.getHandSize() == 0 && !d.isEmpty()) { //when you draw a card, your turn is over and goes to next player's turn
             Card draw2 = d.dealCard();
             p2.addCardToHand(draw2);
             if(p2.checkHandForBook()){
@@ -216,7 +214,7 @@ public class GoFishGame {
             }
         }
 
-        else if (p1.getHandSize() == 0 && !d.isEmpty()) { // hand is empty so draw card
+        else if (p1.getHandSize() == 0 && !d.isEmpty()) { //when you draw a card, your turn is over and goes to next player's turn
             Card draw1 = d.dealCard();
             p1.addCardToHand(draw1);
         }
