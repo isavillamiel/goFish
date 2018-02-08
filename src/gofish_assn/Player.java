@@ -177,5 +177,33 @@ public class Player {
 		}
     	return -1;
     }
-
+	public String playTurn(Player playerResponding, Card chosenOne, Deck d) {
+    	String result = "";
+    	if(playerResponding.rankInHand(chosenOne)){
+    		result += playerResponding.getName() + " says: Yes. I do have a " + chosenOne.getRank() + "\n";
+    		Card removed = playerResponding.removeCardFromHand(chosenOne);
+    		this.addCardToHand(removed);
+    		if(this.checkHandForBook()) {
+				this.removeCardFromHand(removed);
+				// two removes because it only removes 1 at a time
+				this.removeCardFromHand(removed);
+				}
+			result += this.getName() + " books the " + chosenOne.getRank() + "\n";
+		}
+		else if(!playerResponding.rankInHand(chosenOne) && d.isEmpty()){
+    		result += playerResponding.getName() + " says: Go Fish.\n";
+    		result += "No more cards in deck. Continue to next player's turn. \n";
+		}
+		else if(!playerResponding.rankInHand(chosenOne) && !d.isEmpty()){
+    		result += playerResponding.getName() + " says: Go Fish.\n";
+    		Card nextCard = d.dealCard();
+    		result += this.getName() + " draws " + nextCard.toString() + "\n";
+    		this.addCardToHand(nextCard);
+    		if(this.checkHandForBook()){
+    			this.removeCardFromHand(nextCard);
+    			this.removeCardFromHand(nextCard);
+			}
+		}
+    	return result;
+	}
 }

@@ -54,6 +54,9 @@ public class Deck {
 			System.out.println(deck.get(i));
 		}
 	}
+	/**
+	 * helper function that returns the size of the current deck
+	 * */
     public int size (){
 	    return deck.size();
     }

@@ -23,11 +23,7 @@ public class GoFishGame {
         printPlayerHands();
         while ((p1.getBookSize() + p2.getBookSize()) < 52) {
             player1Turn();
-            printPlayerHands();
-            printPlayerBooks();
             player2Turn();
-            printPlayerHands();
-            printPlayerBooks();
 
             if(!d.isEmpty() && p1.getHandSize() ==0 && p2.getHandSize() == 0){
                 Card draw1 = d.dealCard();
@@ -45,7 +41,9 @@ public class GoFishGame {
                 }
             }
         }
+
         GameOver();
+
         try{
             out = new FileWriter("output.txt");
             out.write(output);
@@ -95,7 +93,7 @@ public class GoFishGame {
     private void GameOver(){
         String winner = "";
         String loser = "";
-        String last_message = "Thanks for playing Go Fish!";
+        String last_message = "Thanks for playing Go Fish!\n";
 
         // end of game: must have a total of 26 pairs in both books
         if (p1.getBookSize() > p2.getBookSize()) {
@@ -109,7 +107,7 @@ public class GoFishGame {
 
         }
         else if (p1.getBookSize() == p2.getBookSize()) {
-            String tie = "Tie game!";
+            String tie = "\nTie game!";
             output += "\n" +tie;
             winner += p1.getName() + " has " + p1.getBookSize()/2 + " booked pairs";
             loser += p2.getName() + " has " + p2.getBookSize()/2 + " booked pairs.";
@@ -132,20 +130,7 @@ public class GoFishGame {
         if(p1.getHandSize() >=1 && d.isEmpty()){
             Card chosen2 = p2.chooseCardFromHand();
             p2Turn += p2.getName() + " asks: Do you have a " + chosen2.getRank() + "?";
-            if (p2.rankInHand(chosen2)) {
-                p1Response += "\n" + p1.getName() + " says: Yes. I do have a " + chosen2.getRank();
-                Card removed1 = p1.removeCardFromHand(chosen2);
-                p2.addCardToHand(removed1);
-                if(p2.checkHandForBook()){
-                    p2.removeCardFromHand(chosen2);
-                    p2.removeCardFromHand(chosen2);
-                }
-                p1Response += "\n" + p2.getName() + " books the " + chosen2.getRank();
-            }
-            else{
-                p1Response += p1.getName() + " says: Go Fish";
-                p1Response += "\n" + "No more cards in deck. Continue to next player's turn."+ "\n";
-            }
+               p1Response = p2.playTurn(p1,chosen2,d);
         }
 
         else if (p2.getHandSize() == 0 && !d.isEmpty()) { //when you draw a card, your turn is over and goes to next player's turn
@@ -160,28 +145,7 @@ public class GoFishGame {
 
             Card chosen2 = p2.chooseCardFromHand();
             p2Turn += p2.getName() + " asks: Do you have a " + chosen2.getRank() + "?";
-
-            if (p1.rankInHand(chosen2)) {
-                p1Response += p1.getName() + " says: Yes. I do have a " + chosen2.getRank();
-                Card removed2 = p1.removeCardFromHand(chosen2);
-                p2.addCardToHand(removed2);
-                if(p2.checkHandForBook()){
-                    p2.removeCardFromHand(chosen2);
-                    p2.removeCardFromHand(chosen2);
-                }
-                p1Response += "\n" + p2.getName() + " books the " + chosen2.getRank();
-
-            } else {
-                p1Response += p1.getName() + " says: Go Fish";
-                Card nextCard = d.dealCard();
-                p1Response += "\n" + p2.getName() + " draws " + nextCard.toString();
-                p2.addCardToHand(nextCard);
-
-                if(p2.checkHandForBook()){
-                    p2.removeCardFromHand(nextCard);
-                    p2.removeCardFromHand(nextCard);
-                }
-            }
+            p1Response += p2.playTurn(p1,chosen2,d);
         }
         output += "\n" + p2Turn + "\n" + p1Response;
         System.out.println(p2Turn + "\n" + p1Response + "\n");
@@ -197,24 +161,12 @@ public class GoFishGame {
         if(p1.getHandSize() >=1 && d.isEmpty()){
             Card chosen1 = p1.chooseCardFromHand();
             p1Turn += p1.getName() + " asks: Do you have a " + chosen1.getRank() + "?";
-            if (p2.rankInHand(chosen1)) {
-                p2Response += "\n" + p2.getName() + " says: Yes. I do have a " + chosen1.getRank();
-                Card removed1 = p2.removeCardFromHand(chosen1);
-                p1.addCardToHand(removed1);
-                if(p1.checkHandForBook()){
 
-                    p1.removeCardFromHand(removed1);
-                    p1.removeCardFromHand(removed1);
-                }
-                p2Response += "\n" + p1.getName() + " books the " + chosen1.getRank();
-            }
-            else{
-                p2Response += p2.getName() + " says: Go Fish";
-                p2Response += "\n" + "No more cards in deck. Continue to next player's turn."+ "\n";
-            }
+            p2Response += p1.playTurn(p2,chosen1,d);
+
         }
-
-        else if (p1.getHandSize() == 0 && !d.isEmpty()) { //when you draw a card, your turn is over and goes to next player's turn
+        //when you draw a card, your turn is over and goes to next player's turn
+        else if (p1.getHandSize() == 0 && !d.isEmpty()) {
             Card draw1 = d.dealCard();
             p1.addCardToHand(draw1);
         }
@@ -222,28 +174,10 @@ public class GoFishGame {
         else if (p1.getHandSize() >= 1 && !d.isEmpty()) {
             Card chosen1 = p1.chooseCardFromHand();
             p1Turn += p1.getName() + " asks: Do you have a " + chosen1.getRank() + "?";
+            p2Response += p1.playTurn(p2,chosen1,d);
 
-            if (p2.rankInHand(chosen1)) {
-                p2Response += "\n" + p2.getName() + " says: Yes. I do have a " + chosen1.getRank();
-                Card removed1 = p2.removeCardFromHand(chosen1);
-                p1.addCardToHand(removed1);
-                if(p1.checkHandForBook()){
-                    p1.removeCardFromHand(removed1);
-                    p1.removeCardFromHand(removed1);
-                }
-                p2Response += "\n" + p1.getName() + " books the " + chosen1.getRank();
-            } else {
-                p2Response += p2.getName() + " says: Go Fish";
-                    Card nextCard = d.dealCard();
-                    p2Response += "\n" + p1.getName() + " draws " + nextCard.toString();
-                    p1.addCardToHand(nextCard);
-                    if(p1.checkHandForBook()){
-                        p1.removeCardFromHand(nextCard);
-                        p1.removeCardFromHand(nextCard);
-                    }
-            }
-            output += "\n" + p1Turn + "\n" + p2Response;
-            System.out.println(p1Turn + "\n" + p2Response + "\n");
         }
+        output += "\n" + p1Turn + "\n" + p2Response;
+        System.out.println(p1Turn + "\n" + p2Response + "\n");
     }
 }
