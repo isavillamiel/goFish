@@ -16,7 +16,9 @@ public class GoFishGame {
     private Player p1 = new Player("Desiree");
     private Player p2 = new Player("Isabelle");
 
-
+    /**
+     * Simulates the real card game Go Fish
+     */
     public GoFishGame() {
         FileWriter out = null;
         dealCards();
@@ -68,20 +70,30 @@ public class GoFishGame {
             p2.addCardToHand(c2);
         }
     }
-    // helper function for debugging
+    /**
+     * helper function that prints out all the cards in each player's hand
+     */
     private void printPlayerHands(){
         System.out.println(p1.getName() + "'s Hand: ");
         System.out.println(p1.handToString());
         System.out.println(p2.getName() + "'s Hand: ");
         System.out.println(p2.handToString());
     }
-    // helper function for debugging
+
+    /**
+     * helper function that prints out all the cards in each player's book
+     */
     private void printPlayerBooks(){
         System.out.println(p1.getName() + "'s Book: ");
         System.out.println(p1.bookToString());
         System.out.println(p2.getName() + "'s Book: ");
         System.out.println(p2.bookToString());
     }
+
+    /**
+     * prints out who the winner is with how many pairs
+     * and the prints out the pairs in each player's book
+     */
     private void GameOver(){
         String winner = "";
         String loser = "";
@@ -111,6 +123,10 @@ public class GoFishGame {
         printPlayerBooks();
 
     }
+
+    /**
+     * player 2's turn to ask a question or draw a card if no cards in hand
+     */
     private void player2Turn(){
         String p2Turn = "";
         String p1Response = "";
@@ -172,6 +188,10 @@ public class GoFishGame {
         output += "\n" + p2Turn + "\n" + p1Response;
         System.out.println(p2Turn + "\n" + p1Response + "\n");
     }
+
+    /**
+     * player 1's turn to ask a question or draw a card if no cards in hand
+     */
     private void player1Turn(){
         String p1Turn = "";
         String p2Response = "";
