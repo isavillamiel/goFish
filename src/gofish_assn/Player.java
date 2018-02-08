@@ -98,6 +98,7 @@ public class Player {
 	    Card card1;
 	    Card card2;
 		int current_position = 0;
+		if(hand.size() == 1 || hand.size() == 0){return false;}
 	    for(Card i: hand){
 	        card1 = i;
 			if(sameRankInHand(card1,current_position+1) != -1){
