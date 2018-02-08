@@ -115,6 +115,10 @@ public class GoFishGame {
         output += "\n" + winner + "\n" + loser + "\n" + last_message;
         System.out.println(output);
 
+        output += "\n" + p1.getName() + "'s Books:\n";
+        output += p1.bookToString() + "\n";
+        output += "\n" + p2.getName() + "'s Books:\n";
+        output += p2.bookToString();
         printPlayerHands();
         printPlayerBooks();
 
